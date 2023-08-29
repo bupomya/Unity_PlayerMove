@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody rigid;
     [SerializeField] float speed = 10f;
-    [SerializeField] float rotSpeed = 5f;
+    [SerializeField] float rotSpeed = 5f; // 방향키를 바꿨을때 고개를 돌리는 속도
 
     private Vector3 dir = Vector3.zero;
 
@@ -31,6 +31,7 @@ public class PlayerMove : MonoBehaviour
         {
             if(Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
             {
+            //Mathf.Sign 부호 반환 1, 0, -1
                 transform.Rotate(0, 1, 0);
             }
             transform.forward = Vector3.Lerp(transform.forward, dir, rotSpeed * Time.fixedDeltaTime);
